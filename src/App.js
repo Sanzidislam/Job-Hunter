@@ -1,6 +1,7 @@
 // App.js
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
 import Login from './components/Login';
@@ -16,14 +17,14 @@ function App() {
     <Router>
       <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
-      <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
-        <Route path="/Job-Hunter" element={<HomePage isLoggedIn={isLoggedIn} />} />
-        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/jobs" element={isLoggedIn ? <JobList /> : <HomePage />} />
-        <Route path="/apply/:jobId" element={isLoggedIn ? <JobApply /> : <HomePage />} />
-        <Route path="/confirmation" element={isLoggedIn ? <Confirmation /> : <HomePage />} />
-      </Routes>
+  <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
+  <Route path="/Job-Hunter" element={<HomePage isLoggedIn={isLoggedIn} />} />
+  <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+  <Route path="/register" element={<Register />} />
+  <Route path="/jobs" element={isLoggedIn ? <JobList /> : <HomePage />} />
+  <Route path="/apply/:jobId" element={isLoggedIn ? <JobApply /> : <HomePage />} />
+  <Route path="/confirmation" element={isLoggedIn ? <Confirmation /> : <HomePage />} />
+</Routes>
     </Router>
   );
 }
