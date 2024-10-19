@@ -1,12 +1,13 @@
+// App.js
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
 import HomePage from './components/HomePage';
+import Login from './components/Login';
+import Register from './components/Register';
 import JobList from './components/JobList';
 import JobApply from './components/JobApply';
 import Confirmation from './components/Confirmation';
-import Navbar from './components/Navbar';
-import Login from './components/Login';
-import Register from './components/Register';  // Add this import
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -15,9 +16,10 @@ function App() {
     <Router>
       <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
-        <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
+      <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
+        <Route path="/Job-Hunter" element={<HomePage isLoggedIn={isLoggedIn} />} />
         <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
-        <Route path="/register" element={<Register />} />  {/* Add the register route */}
+        <Route path="/register" element={<Register />} />
         <Route path="/jobs" element={isLoggedIn ? <JobList /> : <HomePage />} />
         <Route path="/apply/:jobId" element={isLoggedIn ? <JobApply /> : <HomePage />} />
         <Route path="/confirmation" element={isLoggedIn ? <Confirmation /> : <HomePage />} />
